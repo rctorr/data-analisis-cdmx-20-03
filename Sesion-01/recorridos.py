@@ -1,7 +1,7 @@
-linea = "-" * 55
-formato1 = "{:15} | {:15} | {:10}"
-formato2 = "{:15} | {:15} | {:>10}"
-formato3 = "{:15} | {:>15} | {:>10}"
+linea = "-" * 60
+formato1 = "{:15} | {:15} | {:10}"  # Formato para encabezado
+formato2 = "{:15} | {:15} | {:>10}"  # Formato para recorridos
+formato3 = "{:15} | {:>15} | {:>10}"  # Formato para total
 
 print()
 print(linea)
