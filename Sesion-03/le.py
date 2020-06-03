@@ -25,5 +25,9 @@ carpeta = "."
 
 # Leer lista de elementos con nombre y tamaño
 elementos = obtener_elementos(carpeta)
+
+# Ordenar los elementos por nombre
+elementos.sort(key=lambda x: x[0].lower() )  # x -> ["nom", 1234], x[0]
+
 # Imprime lista de elementos en formato txt
 imprime_txt(elementos)
