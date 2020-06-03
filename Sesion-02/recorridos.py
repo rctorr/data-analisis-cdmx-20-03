@@ -20,12 +20,17 @@ def obtener_datos():
         {  # 3
             "ORIGEN":"Roma Sur",
             "DESTINO":"Roma Norte",
-            "TIEMPO":"4:00"
+            "TIEMPO":"04:00"
         },
         {  # 4
             "ORIGEN":"Buenavista",
             "DESTINO":"Del Valle Norte",
             "TIEMPO":"30:00"
+        },
+        {  # 5
+            "ORIGEN":"Roma Norte",
+            "DESTINO":"Centrp",
+            "TIEMPO":"24:00"
         },
     ]
     total = 0
@@ -62,7 +67,9 @@ def imprime_txt(rec, tot):
 # Ejecutar funcines
 rec, tot = obtener_datos()
 
-# Ordenar por ORIGEN
-rec.sort(key=lambda r: r["ORIGEN"])
+# Ordenar por ORIGEN y DESTINO
+# rec.sort(key=lambda r: (r["ORIGEN"], r["DESTINO"]) )
+# Ordenar por TIEMPO
+rec.sort(key=lambda r: r["TIEMPO"] )
 
 imprime_txt(rec, tot)
