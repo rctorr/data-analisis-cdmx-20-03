@@ -61,4 +61,8 @@ def imprime_txt(rec, tot):
 
 # Ejecutar funcines
 rec, tot = obtener_datos()
+
+# Ordenar por ORIGEN
+rec.sort(key=lambda r: r["ORIGEN"])
+
 imprime_txt(rec, tot)
