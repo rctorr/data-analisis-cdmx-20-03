@@ -41,21 +41,24 @@ def obtener_datos():
 
 # RETO: Tranforma en una función
 # Imprimir lista de recorridos
-linea = "-" * 60
-formato1 = "{:15} | {:15} | {:10}"  # Formato para encabezado
-formato2 = "{:15} | {:15} | {:>10}"  # Formato para recorridos
-formato3 = "{:15} | {:>15} | {:>10}"  # Formato para total
+def imprime_txt(rec, tot):
+    """ Imprime la lista de recorridos en formato txt """
+    linea = "-" * 60
+    formato1 = "{:15} | {:15} | {:10}"  # Formato para encabezado
+    formato2 = "{:15} | {:15} | {:>10}"  # Formato para recorridos
+    formato3 = "{:15} | {:>15} | {:>10}"  # Formato para total
 
-print()
-print(linea)
-print(formato1.format(*rec[0].keys() ))  # "ORIGEN", "D", "T"
-print(linea)
-for r in rec:
-    print(formato2.format(*r.values()))
-print(linea)
-print(formato3.format("", "Tiempo total:", tot))
-print()
+    print()
+    print(linea)
+    print(formato1.format(*rec[0].keys() ))  # "ORIGEN", "D", "T"
+    print(linea)
+    for r in rec:
+        print(formato2.format(*r.values()))
+    print(linea)
+    print(formato3.format("", "Tiempo total:", tot))
+    print()
 
-# Ejecutar función
+
+# Ejecutar funcines
 rec, tot = obtener_datos()
-imprime_recorridos(rec, tot)
+imprime_txt(rec, tot)
