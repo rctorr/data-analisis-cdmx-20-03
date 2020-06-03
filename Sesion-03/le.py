@@ -16,6 +16,7 @@ def obtener_elementos(carp):
 
 def imprime_txt(elems):
     """ Imprime la lista de elementos en formato txt """
+    print("{:10}  {}".format("TAMAÑO", "NOMBRE") )
     for e in elems:
         print("{:10}  {}".format(e[1], e[0]) )
 
