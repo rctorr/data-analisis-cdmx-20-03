@@ -68,17 +68,17 @@ def imprime_txt(rec, tot):
 
 def imprime_html(registros, total):
     """ Imprime la lista de recorridos en formato HTML """
-    linea = "<hr />"
-    formato1 = "<td>{}</td><td>{}</td><td>{}</td>"
+    tabla_inicio = "<table>"
+    tabla_fin = "</table>"
+    formato1 = "<tr><td>{}</td><td>{}</td><td>{}</td></tr>"
 
     print()
-    print(linea)
-    print(formato1.format(*registros[0].keys() ))  # "ORIGEN", "D", "T"
-    print(linea)
+    print(tabla_inicio)
+    print(formato1.format(*registros[0].keys() ))
     for r in registros:
         print(formato1.format(*r.values()))
-    print(linea)
     print(formato1.format("", "Tiempo total:", total))
+    print(tabla_fin)
     print()
 
 @click.command()
