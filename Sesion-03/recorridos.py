@@ -1,3 +1,5 @@
+import click
+
 def obtener_datos():
     """ Obtiene la lista de recorridos y el total """
     # Obteniendo datos
@@ -64,7 +66,25 @@ def imprime_txt(rec, tot):
     print()
 
 
-def main():
+def imprime_html(registros, total):
+    """ Imprime la lista de recorridos en formato HTML """
+    linea = "<hr />"
+    formato1 = "<td>{}</td><td>{}</td><td>{}</td>"
+
+    print()
+    print(linea)
+    print(formato1.format(*registros[0].keys() ))  # "ORIGEN", "D", "T"
+    print(linea)
+    for r in registros:
+        print(formato1.format(*r.values()))
+    print(linea)
+    print(formato1.format("", "Tiempo total:", total))
+    print()
+
+@click.command()
+@click.option("--html", "fhtml", is_flag=True,
+    help="Imprime el resultado en formato HTML")
+def main(fhtml):
     """ Función principal del script """
     # Ejecutar funcines
     rec, tot = obtener_datos()
@@ -74,7 +94,10 @@ def main():
     # Ordenar por TIEMPO
     rec.sort(key=lambda r: r["TIEMPO"] )
 
-    imprime_txt(rec, tot)
+    if fhtml:  # True o False
+        imprime_html(rec, tot)
+    else:
+        imprime_txt(rec, tot)
 
 
 # Para que funciones como módulo
