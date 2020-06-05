@@ -81,10 +81,23 @@ def imprime_html(registros, total):
     print(tabla_fin)
     print()
 
+
+def imprime_csv(registros):
+    """ Imprime la lista de recorridos en formato CSV """
+    formato = "{},{},{}"
+    
+    print(formato.format(*registros[0].keys() ))
+    
+    for r in registros:
+        print(formato.format(*r.values()))
+
+
 @click.command()
 @click.option("--html", "fhtml", is_flag=True,
     help="Imprime el resultado en formato HTML")
-def main(fhtml):
+@click.option("--csv", "fcsv", is_flag=True,
+    help="Imprime el resultado en formato CSV")
+def main(fhtml, fcsv):
     """ Función principal del script """
     # Ejecutar funcines
     rec, tot = obtener_datos()
@@ -96,6 +109,8 @@ def main(fhtml):
 
     if fhtml:  # True o False
         imprime_html(rec, tot)
+    elif fcsv:
+        imprime_csv(rec)
     else:
         imprime_txt(rec, tot)
 
