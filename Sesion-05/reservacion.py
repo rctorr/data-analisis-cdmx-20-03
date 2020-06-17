@@ -16,7 +16,32 @@ class Servicio:
     def __str__(self):
         """ Representación impresa de Servicio """
         return self.concepto
+    
+    def en_txt(self):
+        """ Representación en TXT de un Servicio """
+        formato = "{:2} | {:25} | {:3} | {:10.2f}"
+        return formato.format(
+            self.id, self.concepto, self.cantidad, self.precio)
 
+
+class Reservacion:
+    def __init__(self, lista_servicios):
+        """ Constructor del objeto Reservacion """
+        self.servicios = lista_servicios
+
+
+class ReservacionTXT(Reservacion):
+    def __init__(self, lista_servicios):
+        """ Constructor del objeto ReservacionTXT """
+        Reservacion.__init__(self, lista_servicios)
+        
+    def __str__(self):
+        """ Representación en TXT de una Reservación """
+        texto = ""
+        for servicio in self.servicios:
+            texto += servicio.en_txt() + "\n"  # "1  | nom | 1 | .."
+        
+        return texto
 
 def lee_csv(nomarch):
     """
@@ -60,9 +85,9 @@ def main(id_servicio):
     #         lista.append(servicio)
     # lista_de_servicios = lista
     
-    for servicio in lista_de_servicios:
-        print(servicio.id, servicio)
-        
+    reservacion_txt = ReservacionTXT(lista_de_servicios)
+    print( reservacion_txt )
+    
 
 if __name__ == "__main__":
     main()
